@@ -34,3 +34,9 @@ h3 {
     }
 }
 
+@media (min-width: 541px) {
+    .cdk-overlay-pane {
+        display: none;
+    }
+}
+
