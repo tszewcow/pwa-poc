@@ -1,14 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatButtonModule, MatCheckboxModule, MatCardModule, MatSelectModule, MatToolbarModule  } from '@angular/material';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
+import {AppComponent} from './app.component';
+import {CoreModule} from './core/core.module';
+import {SharedModule} from './shared/shared.module';
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
+import {CheckNetworkStatusService} from './check-network-status.service';
 
 
 @NgModule({
@@ -18,16 +18,12 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule.forRoot(),
-    MatButtonModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatSelectModule,
-    MatToolbarModule,
     CoreModule,
+    SharedModule,
     environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : []
   ],
-  providers: [],
+  providers: [CheckNetworkStatusService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
